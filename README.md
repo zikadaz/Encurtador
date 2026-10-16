@@ -72,7 +72,7 @@ utils/
 - Abra o seu navegador
     
     Na barra de pesquisa, coloque: 
-        `http://127.0.0.1/kgTY2`
+        `http://127.0.0.1:8080/kgTY2`
         
     lembrando que esse código é ilustrativo.
 
