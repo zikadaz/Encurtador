@@ -10,7 +10,7 @@ O projeto é um encurtador de link para praticar requisições HTTP, operações
 ## Estrutura do projeto
 
 ```
-EncurtadorLink/
+Encurtador/
 ├── server/ # código principal
 ├── .gitignore
 ├── go.mod
@@ -63,7 +63,7 @@ utils/
 - Abra outra requisição, dessa vez `GET` para a mesma URL, retornará algo parecido com
     ```json
     {
-        "kgTY2" {
+        "kgTY2": {
             "url":"sua_url", // a url da requisicao post
             "code":"kgTY2",
             "clicked": 0 // O tanto de vezes que alguem foi redirecionado por esse código
