@@ -16,6 +16,8 @@ func main() {
 	http.HandleFunc("POST /links", handler.AddData)
 	http.HandleFunc("GET /links", handler.ReadDataFromDatabase)
 	http.HandleFunc("GET /{code}", handler.RedirectUrl)
+	http.HandleFunc("DELETE /{code}",handler.RemoveInfoFromDatabase)
+	http.HandleFunc("PUT /{code}", handler.UpdateCode)
 	log.Println("Rodando....")
 	http.ListenAndServe(":8080",nil)
 }

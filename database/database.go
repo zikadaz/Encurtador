@@ -150,3 +150,45 @@ func ClearDatabase() error {
 		return err
 	})
 }
+
+func RemoveInfoFromDatabase(key /*a 'key precisa ser o code'*/string) error {
+	err := DB.Update(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte("links"))
+		if b == nil {
+			return fmt.Errorf("Não foi possivel resolver operação: deletar.")
+		}
+		value := b.Get([]byte(key))
+		if value == nil {
+			return fmt.Errorf("Não encontrado.")
+		}
+		return b.Delete([]byte(key))
+	})
+	if err != nil {
+		fmt.Println(err)
+	}
+	return err
+}
+
+func UpdateInfoFromDatabase(key string /*codigo*/, newUrl /*nova url*/ string) error {
+	err := DB.Update(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte("links"))
+		if b == nil {
+			return fmt.Errorf("Bucket não encontrado.")
+		}
+		value := b.Get([]byte(key))
+		if value == nil {
+			return fmt.Errorf("Nao encontrado.")
+		}
+		var link model.Url
+		if err := json.Unmarshal(value, &link); err != nil {
+			return err
+		}
+		link.Url = newUrl
+		updatedValue, err := json.Marshal(link)
+		if err != nil {
+			return err
+		}
+		return b.Put([]byte(key), []byte(updatedValue))
+	})
+	return err
+}

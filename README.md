@@ -29,8 +29,8 @@ handler/
 ├── add_data.go # valida adiciona os dados "POST /links" ao banco de dados
 ├── read_data.go # lê o banco de dados com base em uma função de database.go
 ├── redirect_url # redireciona o usuário por "GET /{code}"
-├── remove_data.go # removerá um código / url do banco de dados (a implementar)
-├── update_data.go # atualiza uma url de um código (a implementar)
+├── remove_data.go # removerá um código / url do banco de dados
+├── update_data.go # atualiza uma url de um código 
 model/
 ├── model.go # o modelo utilizado pelos handlers e database
 utils/
